@@ -1,17 +1,17 @@
-from catalogue import app, ALLOWED_EXTENSIONS
+from catalogue import app #, ALLOWED_EXTENSIONS
 import os
 from flask import render_template, request, redirect, flash, url_for
 from werkzeug.utils import secure_filename
-from catalogue.models import Products
-from catalogue.load_database import upload_db
+from catalogue.models import Categories, Products, Variants
+#from catalogue.load_database import upload_db
 
-def allowed_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+#def allowed_file(filename):
+#    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 #Pendiente de revisar Flash messages, rutas en produccion
-@app.route("/", methods=['GET','POST'])
+@app.route("/")#, methods=['GET','POST'])
 def home():
-    if request.method == 'POST':
+    """    if request.method == 'POST':
     # check if the post request has the file part
         if 'file' not in request.files:
             #flash('No file part')
@@ -26,6 +26,6 @@ def home():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             upload_db(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect("/")
-    products = Products.query.all()
-    return render_template("home.html", products=products)
+            return redirect("/") """
+    categories = Categories.query.all()
+    return render_template("home.html", categories=categories)
