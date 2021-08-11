@@ -1,0 +1,3 @@
+catalogue/__pycache__/
+catalogue/templates/upload.html
+load_database.py
